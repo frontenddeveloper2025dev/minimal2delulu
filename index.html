@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delulu Minimal - Diseño Digital Estratégico</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="/_sdk/element_sdk.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #ffffff;
+        color: #1a1a1a;
+      }
+
+      .font-mono {
+        font-family: "JetBrains Mono", monospace;
+      }
+
+      .scroll-smooth {
+        scroll-behavior: smooth;
+      }
+
+      .divider {
+        height: 1px;
+        background: #e5e5e5;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-fade-in {
+        animation: fadeInUp 0.8s ease-out forwards;
+      }
+
+      .delay-1 {
+        animation-delay: 0.1s;
+        opacity: 0;
+      }
+      .delay-2 {
+        animation-delay: 0.2s;
+        opacity: 0;
+      }
+      .delay-3 {
+        animation-delay: 0.3s;
+        opacity: 0;
+      }
+      .delay-4 {
+        animation-delay: 0.4s;
+        opacity: 0;
+      }
+
+      .link-hover {
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      .link-hover::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: #1a1a1a;
+        transition: width 0.3s ease;
+      }
+
+      .link-hover:hover::after {
+        width: 100%;
+      }
+
+      .project-card {
+        border: 1px solid #e5e5e5;
+        transition: all 0.4s ease;
+        background: #fafafa;
+      }
+
+      .project-card:hover {
+        border-color: #1a1a1a;
+        background: #f5f5f5;
+        transform: translateY(-2px);
+      }
+
+      .value-item {
+        opacity: 0;
+        animation: fadeInUp 0.8s ease-out forwards;
+      }
+
+      .value-item:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .value-item:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .value-item:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .value-item:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .value-item:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+
+      .service-grid {
+        display: grid;
+        gap: 3rem;
+      }
+
+      @media (max-width: 768px) {
+        .service-grid {
+          gap: 2rem;
+        }
+
+        section {
+          padding: 3rem 1.5rem !important;
+        }
+      }
+
+      .accent-line {
+        width: 3px;
+        height: 32px;
+        background: #2563eb;
+        margin-right: 1rem;
+      }
+
+      .button-primary {
+        background: #1a1a1a;
+        color: white;
+        padding: 0.875rem 2rem;
+        border-radius: 4px;
+        border: 1px solid #1a1a1a;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        font-family: "Inter", sans-serif;
+      }
+
+      .button-primary:hover {
+        background: #333333;
+        border-color: #333333;
+      }
+
+      .button-secondary {
+        background: transparent;
+        color: #1a1a1a;
+        padding: 0.875rem 2rem;
+        border-radius: 4px;
+        border: 1px solid #1a1a1a;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        font-family: "Inter", sans-serif;
+      }
+
+      .button-secondary:hover {
+        background: #1a1a1a;
+        color: white;
+      }
+
+      .metric {
+        text-align: center;
+      }
+
+      .metric-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-bottom: 0.5rem;
+      }
+
+      .metric-label {
+        color: #666666;
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+    </style>
+    <style>
+      body {
+        box-sizing: border-box;
+      }
+    </style>
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  </head>
+  <body class="h-full w-full scroll-smooth">
+    <!-- Navigation -->
+    <nav
+      class="fixed top-0 left-0 right-0 z-50 px-6 py-4 md:px-12 lg:px-20"
+      style="
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid #e5e5e5;
+      "
+    >
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="font-bold text-xl tracking-tight">
+          <span style="color: #2563eb">◆</span> MINIMAL
+        </div>
+        <div
+          class="hidden lg:flex gap-8 text-sm font-medium"
+          style="color: #666"
+        >
+          <a href="#about" class="link-hover">Sobre nosotros</a>
+          <a href="#values" class="link-hover">Valores</a>
+          <a href="#services" class="link-hover">Servicios</a>
+          <a href="#projects" class="link-hover">Proyectos</a>
+          <a href="#contact" class="link-hover">Contacto</a>
+        </div>
+        <button id="cta-nav" class="button-primary text-sm">Comencemos</button>
+      </div>
+    </nav>
+    <!-- Hero Section -->
+    <section
+      class="min-h-screen flex items-center justify-center px-6 md:px-12 lg:px-20 pt-20"
+      style="background: #ffffff"
+    >
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="animate-fade-in delay-1 mb-6">
+          <span class="inline-block text-5xl" style="color: #2563eb">◆</span>
+        </div>
+        <h1
+          id="hero-title"
+          class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in delay-2"
+          style="color: #1a1a1a; line-height: 1.2"
+        >
+          Delulu Minimal
+        </h1>
+        <p
+          id="hero-subtitle"
+          class="text-xl md:text-2xl mb-4 animate-fade-in delay-3"
+          style="color: #666"
+        >
+          Diseño Digital Estratégico y Accesible
+        </p>
+        <p
+          id="tagline"
+          class="text-lg md:text-xl mb-12 animate-fade-in delay-4 font-mono"
+          style="color: #2563eb; font-weight: 500"
+        >
+          Menos ruido. Más intención.
+        </p>
+        <div class="animate-fade-in delay-4">
+          <button
+            id="cta-hero"
+            class="button-primary text-base md:text-lg px-8 py-4"
+          >
+            Comencemos
+          </button>
+        </div>
+        <div class="mt-20">
+          <p class="text-sm" style="color: #999; margin-bottom: 2rem">
+            Scroll para explorar
+          </p>
+          <svg
+            class="w-6 h-6 mx-auto animate-bounce"
+            style="color: #999"
+            fill="none"
+            stroke="currentColor"
+            viewbox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            />
+          </svg>
+        </div>
+      </div>
+    </section>
+    <!-- About Section -->
+    <section
+      id="about"
+      class="py-20 md:py-32 px-6 md:px-12 lg:px-20"
+      style="background: #f9f9f9; border-top: 1px solid #e5e5e5"
+    >
+      <div class="max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-start">
+          <div>
+            <div
+              style="display: flex; align-items: center; margin-bottom: 2rem"
+            >
+              <div class="accent-line"></div>
+              <span class="font-mono text-sm font-semibold" style="color: #999"
+                >¿QUIÉNES SOMOS?</span
+              >
+            </div>
+            <h2
+              class="text-3xl md:text-4xl lg:text-5xl font-bold mb-8"
+              style="color: #1a1a1a; line-height: 1.2"
+            >
+              Diseño digital que respira
+            </h2>
+          </div>
+          <div class="space-y-6" style="color: #555">
+            <p class="text-lg leading-relaxed">
+              Delulu Minimal es nuestra línea estratégica enfocada en
+              <strong style="color: #1a1a1a"
+                >diseño web y producto digital</strong
+              >
+              donde la estética potencia la funcionalidad.
+            </p>
+            <p class="text-lg leading-relaxed">
+              Creamos interfaces limpias, jerárquicas y accesibles. Cada
+              decisión visual tiene propósito. Cada interacción comunica.
+            </p>
+            <p class="text-lg leading-relaxed">
+              <strong style="color: #1a1a1a"
+                >No diseñamos para impresionar.</strong
+              >
+              Diseñamos para que funcione, que se entienda y que inspire
+              confianza.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Values Section -->
+    <section
+      id="values"
+      class="py-20 md:py-32 px-6 md:px-12 lg:px-20"
+      style="background: #ffffff; border-top: 1px solid #e5e5e5"
+    >
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin-bottom: 2rem;
+            "
+          >
+            <div class="accent-line"></div>
+            <span class="font-mono text-sm font-semibold" style="color: #999"
+              >PRINCIPIOS</span
+            >
+          </div>
+          <h2
+            class="text-3xl md:text-4xl lg:text-5xl font-bold"
+            style="color: #1a1a1a"
+          >
+            Cómo trabajamos
+          </h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="value-item">
+            <div
+              class="font-mono text-sm font-semibold mb-3"
+              style="color: #2563eb"
+            >
+              01
+            </div>
+            <h3 class="text-xl font-semibold mb-3" style="color: #1a1a1a">
+              Claridad antes que ruido
+            </h3>
+            <p style="color: #666; line-height: 1.6">
+              La información debe entenderse sin esfuerzo. Jerarquía clara,
+              tipografía legible, espacios generosos.
+            </p>
+          </div>
+          <div class="value-item">
+            <div
+              class="font-mono text-sm font-semibold mb-3"
+              style="color: #2563eb"
+            >
+              02
+            </div>
+            <h3 class="text-xl font-semibold mb-3" style="color: #1a1a1a">
+              Accesibilidad real
+            </h3>
+            <p style="color: #666; line-height: 1.6">
+              Contraste suficiente, navegación intuitiva, estructura coherente.
+              Diseñamos para todas las personas.
+            </p>
+          </div>
+          <div class="value-item">
+            <div
+              class="font-mono text-sm font-semibold mb-3"
+              style="color: #2563eb"
+            >
+              03
+            </div>
+            <h3 class="text-xl font-semibold mb-3" style="color: #1a1a1a">
+              Estrategia visual
+            </h3>
+            <p style="color: #666; line-height: 1.6">
+              Cada color, espacio y tipografía tiene propósito. Nada es
+              decorativo si no comunica.
+            </p>
+          </div>
+          <div class="value-item">
+            <div
+              class="font-mono text-sm font-semibold mb-3"
+              style="color: #2563eb"
+            >
+              04
+            </div>
+            <h3 class="text-xl font-semibold mb-3" style="color: #1a1a1a">
+              Confianza estructural
+            </h3>
+            <p style="color: #666; line-height: 1.6">
+              Interfaces limpias generan seguridad. Usuarios saben dónde están y
+              qué hacer.
+            </p>
+          </div>
+          <div class="value-item">
+            <div
+              class="font-mono text-sm font-semibold mb-3"
+              style="color: #2563eb"
+            >
+              05
+            </div>
+            <h3 class="text-xl font-semibold mb-3" style="color: #1a1a1a">
+              Multidisciplina aplicada
+            </h3>
+            <p style="color: #666; line-height: 1.6">
+              Branding, UX, producto y dirección visual trabajando juntos.
+              Coherencia en todo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Services Section -->
+    <section
+      id="services"
+      class="py-20 md:py-32 px-6 md:px-12 lg:px-20"
+      style="background: #f9f9f9; border-top: 1px solid #e5e5e5"
+    >
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin-bottom: 2rem;
+            "
+          >
+            <div class="accent-line"></div>
+            <span class="font-mono text-sm font-semibold" style="color: #999"
+              >SERVICIOS</span
+            >
+          </div>
+          <h2
+            class="text-3xl md:text-4xl lg:text-5xl font-bold"
+            style="color: #1a1a1a"
+          >
+            Lo que hacemos
+          </h2>
+        </div>
+        <div class="service-grid">
+          <div
+            class="border-l-4"
+            style="border-color: #2563eb; padding-left: 2rem"
+          >
+            <h3 class="text-2xl font-semibold mb-4" style="color: #1a1a1a">
+              Diseño Web Estratégico
+            </h3>
+            <p style="color: #666; font-size: 1.1rem; line-height: 1.8">
+              Landing pages, sitios corporativos y portafolios con enfoque en
+              claridad, jerarquía y conversión. Diseño que no solo se ve bien,
+              sino que funciona.
+            </p>
+          </div>
+          <div
+            class="border-l-4"
+            style="border-color: #2563eb; padding-left: 2rem"
+          >
+            <h3 class="text-2xl font-semibold mb-4" style="color: #1a1a1a">
+              Producto Digital
+            </h3>
+            <p style="color: #666; font-size: 1.1rem; line-height: 1.8">
+              Interfaces para apps, dashboards, plataformas. UX centrado en
+              usuario, accesibilidad y usabilidad en todo.
+            </p>
+          </div>
+          <div
+            class="border-l-4"
+            style="border-color: #2563eb; padding-left: 2rem"
+          >
+            <h3 class="text-2xl font-semibold mb-4" style="color: #1a1a1a">
+              Identidad Visual Minimalista
+            </h3>
+            <p style="color: #666; font-size: 1.1rem; line-height: 1.8">
+              Sistemas visuales limpios, funcionales y escalables. Branding que
+              comunica sin saturar.
+            </p>
+          </div>
+          <div
+            class="border-l-4"
+            style="border-color: #2563eb; padding-left: 2rem"
+          >
+            <h3 class="text-2xl font-semibold mb-4" style="color: #1a1a1a">
+              Auditoría UX &amp; Accesibilidad
+            </h3>
+            <p style="color: #666; font-size: 1.1rem; line-height: 1.8">
+              Revisión profunda de jerarquía, contraste, navegación y
+              estructura. Identificamos problemas, sugerimos soluciones.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Projects Section -->
+    <section
+      id="projects"
+      class="py-20 md:py-32 px-6 md:px-12 lg:px-20"
+      style="background: #ffffff; border-top: 1px solid #e5e5e5"
+    >
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin-bottom: 2rem;
+            "
+          >
+            <div class="accent-line"></div>
+            <span class="font-mono text-sm font-semibold" style="color: #999"
+              >CASOS DE ESTUDIO</span
+            >
+          </div>
+          <h2
+            class="text-3xl md:text-4xl lg:text-5xl font-bold"
+            style="color: #1a1a1a"
+          >
+            Proyectos recientes
+          </h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Project 1 -->
+          <div class="project-card p-6 md:p-8 rounded-lg">
+            <div
+              style="
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                height: 200px;
+                border-radius: 4px;
+                margin-bottom: 1.5rem;
+              "
+            ></div>
+            <h3 class="text-xl font-semibold mb-2" style="color: #1a1a1a">
+              Inner Rhythm
+            </h3>
+            <p style="color: #666; margin-bottom: 1rem; font-size: 0.95rem">
+              Plataforma de meditación y bienestar emocional. UX minimalista,
+              datos visuales claros, interfaz que calma.
+            </p>
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem">
+              <span
+                class="font-mono text-xs px-2 py-1 rounded"
+                style="background: #f0f0f0; color: #1a1a1a"
+                >UX/UI</span
+              >
+              <span
+                class="font-mono text-xs px-2 py-1 rounded"
+                style="background: #f0f0f0; color: #1a1a1a"
+                >Accesibilidad</span
+              >
+            </div>
+          </div>
+          <!-- Project 2 -->
+          <div class="project-card p-6 md:p-8 rounded-lg">
+            <div
+              style="
+                background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+                height: 200px;
+                border-radius: 4px;
+                margin-bottom: 1.5rem;
+              "
+            ></div>
+            <h3 class="text-xl font-semibold mb-2" style="color: #1a1a1a">
+              BAAR
+            </h3>
+            <p style="color: #666; margin-bottom: 1rem; font-size: 0.95rem">
+              Sitio corporativo con jerarquía clara y navegación intuitiva.
+              Diseño profesional, estructura estratégica.
+            </p>
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem">
+              <span
+                class="font-mono text-xs px-2 py-1 rounded"
+                style="background: #f0f0f0; color: #1a1a1a"
+                >Web Design</span
+              >
+              <span
+                class="font-mono text-xs px-2 py-1 rounded"
+                style="background: #f0f0f0; color: #1a1a1a"
+                >Branding</span
+              >
+            </div>
+          </div>
+          <!-- Project 3 -->
+          <div class="project-card p-6 md:p-8 rounded-lg">
+            <div
+              style="
+                background: linear-gradient(135deg, #48dbfb 0%, #0abde3 100%);
+                height: 200px;
+                border-radius: 4px;
+                margin-bottom: 1.5rem;
+              "
+            ></div>
+            <h3 class="text-xl font-semibold mb-2" style="color: #1a1a1a">
+              VéloParis
+            </h3>
+            <p style="color: #666; margin-bottom: 1rem; font-size: 0.95rem">
+              Plataforma de movilidad urbana. Producto digital limpio, elegante
+              y centrado en experiencia.
+            </p>
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem">
+              <span
+                class="font-mono text-xs px-2 py-1 rounded"
+                style="background: #f0f0f0; color: #1a1a1a"
+                >Producto</span
+              >
+              <span
+                class="font-mono text-xs px-2 py-1 rounded"
+                style="background: #f0f0f0; color: #1a1a1a"
+                >UX Strategy</span
+              >
+            </div>
+          </div>
+          <!-- Project 4 -->
+          <div class="project-card p-6 md:p-8 rounded-lg">
+            <div
+              style="
+                background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+                height: 200px;
+                border-radius: 4px;
+                margin-bottom: 1.5rem;
+              "
+            ></div>
+            <h3 class="text-xl font-semibold mb-2" style="color: #1a1a1a">
+              Evaluación TDA/TDAH
+            </h3>
+            <p style="color: #666; margin-bottom: 1rem; font-size: 0.95rem">
+              Interfaz funcional para diagnóstico clínico. Claridad, estructura
+              y usabilidad sin compromisos.
+            </p>
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem">
+              <span
+                class="font-mono text-xs px-2 py-1 rounded"
+                style="background: #f0f0f0; color: #1a1a1a"
+                >Producto</span
+              >
+              <span
+                class="font-mono text-xs px-2 py-1 rounded"
+                style="background: #f0f0f0; color: #1a1a1a"
+                >Accesibilidad</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact Section -->
+    <section
+      id="contact"
+      class="py-20 md:py-32 px-6 md:px-12 lg:px-20"
+      style="background: #1a1a1a; color: #ffffff; border-top: 1px solid #333333"
+    >
+      <div class="max-w-4xl mx-auto text-center">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+          "
+        >
+          <div
+            style="
+              width: 3px;
+              height: 32px;
+              background: #2563eb;
+              margin-right: 1rem;
+            "
+          ></div>
+          <span class="font-mono text-sm font-semibold" style="color: #888"
+            >COMENCEMOS</span
+          >
+        </div>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+          ¿Listo para diseño que funciona?
+        </h2>
+        <p class="text-lg md:text-xl mb-12" style="color: #aaa">
+          Cuéntanos tu proyecto. Haremos que funcione.
+        </p>
+        <button
+          id="cta-footer"
+          class="button-primary"
+          style="border-color: white; color: #1a1a1a; background: white"
+        >
+          Hablemos
+        </button>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer
+      class="px-6 md:px-12 lg:px-20 py-8"
+      style="background: #000000; border-top: 1px solid #333333; color: #666"
+    >
+      <div
+        class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4"
+      >
+        <div class="font-bold" style="color: #ffffff">
+          <span style="color: #2563eb">◆</span> DELULU MINIMAL
+        </div>
+        <p id="footer-text" class="text-sm">
+          © 2024 Delulu Minimal. Diseño digital estratégico.
+        </p>
+        <div class="flex gap-4 text-sm">
+          <a href="#" class="link-hover" style="color: #666">Instagram</a>
+          <a href="#" class="link-hover" style="color: #666">Twitter</a>
+          <a href="#" class="link-hover" style="color: #666">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+    <script>
+      const defaultConfig = {
+        hero_title: "Delulu Minimal",
+        hero_subtitle: "Diseño Digital Estratégico y Accesible",
+        tagline: "Menos ruido. Más intención.",
+        cta_text: "Comencemos",
+        footer_text: "© 2024 Delulu Minimal. Diseño digital estratégico.",
+        background_color: "#ffffff",
+        text_color: "#1a1a1a",
+        accent_color: "#2563eb",
+      };
+
+      async function onConfigChange(config) {
+        const heroTitle = document.getElementById("hero-title");
+        if (heroTitle) {
+          heroTitle.textContent = config.hero_title || defaultConfig.hero_title;
+        }
+
+        const heroSubtitle = document.getElementById("hero-subtitle");
+        if (heroSubtitle) {
+          heroSubtitle.textContent =
+            config.hero_subtitle || defaultConfig.hero_subtitle;
+        }
+
+        const tagline = document.getElementById("tagline");
+        if (tagline) {
+          tagline.textContent = config.tagline || defaultConfig.tagline;
+        }
+
+        const ctaNav = document.getElementById("cta-nav");
+        const ctaHero = document.getElementById("cta-hero");
+        const ctaFooter = document.getElementById("cta-footer");
+        const ctaText = config.cta_text || defaultConfig.cta_text;
+
+        if (ctaNav) ctaNav.textContent = ctaText;
+        if (ctaHero) ctaHero.textContent = ctaText;
+        if (ctaFooter) ctaFooter.textContent = ctaText;
+
+        const footerText = document.getElementById("footer-text");
+        if (footerText) {
+          footerText.textContent =
+            config.footer_text || defaultConfig.footer_text;
+        }
+      }
+
+      function mapToCapabilities(config) {
+        return {
+          recolorables: [
+            {
+              get: () =>
+                config.background_color || defaultConfig.background_color,
+              set: (value) => {
+                config.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              },
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              },
+            },
+            {
+              get: () => config.accent_color || defaultConfig.accent_color,
+              set: (value) => {
+                config.accent_color = value;
+                window.elementSdk.setConfig({ accent_color: value });
+              },
+            },
+          ],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined,
+        };
+      }
+
+      function mapToEditPanelValues(config) {
+        return new Map([
+          ["hero_title", config.hero_title || defaultConfig.hero_title],
+          [
+            "hero_subtitle",
+            config.hero_subtitle || defaultConfig.hero_subtitle,
+          ],
+          ["tagline", config.tagline || defaultConfig.tagline],
+          ["cta_text", config.cta_text || defaultConfig.cta_text],
+          ["footer_text", config.footer_text || defaultConfig.footer_text],
+        ]);
+      }
+
+      if (window.elementSdk) {
+        window.elementSdk.init({
+          defaultConfig,
+          onConfigChange,
+          mapToCapabilities,
+          mapToEditPanelValues,
+        });
+      }
+
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+    </script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'9cd28e49f671d08d',t:'MTc3MDk2NzE0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
